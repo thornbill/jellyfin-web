@@ -1,6 +1,6 @@
 import { playbackManager } from '../playback/playbackmanager';
 import nowPlayingHelper from '../playback/nowplayinghelper';
-import { ConnectionManager, events } from 'jellyfin-apiclient';
+import { ConnectionManager, Events } from 'jellyfin-apiclient';
 /* eslint-disable indent */
 
     // Reports media playback to the device for lock screen control
@@ -164,12 +164,12 @@ import { ConnectionManager, events } from 'jellyfin-apiclient';
 
     function releaseCurrentPlayer() {
         if (currentPlayer) {
-            events.off(currentPlayer, 'playbackstart', onPlaybackStart);
-            events.off(currentPlayer, 'playbackstop', onPlaybackStopped);
-            events.off(currentPlayer, 'unpause', onGeneralEvent);
-            events.off(currentPlayer, 'pause', onGeneralEvent);
-            events.off(currentPlayer, 'statechange', onStateChanged);
-            events.off(currentPlayer, 'timeupdate', onGeneralEvent);
+            Events.off(currentPlayer, 'playbackstart', onPlaybackStart);
+            Events.off(currentPlayer, 'playbackstop', onPlaybackStopped);
+            Events.off(currentPlayer, 'unpause', onGeneralEvent);
+            Events.off(currentPlayer, 'pause', onGeneralEvent);
+            Events.off(currentPlayer, 'statechange', onStateChanged);
+            Events.off(currentPlayer, 'timeupdate', onGeneralEvent);
 
             currentPlayer = null;
 
@@ -198,12 +198,12 @@ import { ConnectionManager, events } from 'jellyfin-apiclient';
         const state = playbackManager.getPlayerState(player);
         updatePlayerState(player, state, 'init');
 
-        events.on(currentPlayer, 'playbackstart', onPlaybackStart);
-        events.on(currentPlayer, 'playbackstop', onPlaybackStopped);
-        events.on(currentPlayer, 'unpause', onGeneralEvent);
-        events.on(currentPlayer, 'pause', onGeneralEvent);
-        events.on(currentPlayer, 'statechange', onStateChanged);
-        events.on(currentPlayer, 'timeupdate', onGeneralEvent);
+        Events.on(currentPlayer, 'playbackstart', onPlaybackStart);
+        Events.on(currentPlayer, 'playbackstop', onPlaybackStopped);
+        Events.on(currentPlayer, 'unpause', onGeneralEvent);
+        Events.on(currentPlayer, 'pause', onGeneralEvent);
+        Events.on(currentPlayer, 'statechange', onStateChanged);
+        Events.on(currentPlayer, 'timeupdate', onGeneralEvent);
     }
 
     function execute(name) {
@@ -251,7 +251,7 @@ import { ConnectionManager, events } from 'jellyfin-apiclient';
         });
     }
 
-    events.on(playbackManager, 'playerchange', function () {
+    Events.on(playbackManager, 'playerchange', function () {
         bindToPlayer(playbackManager.getCurrentPlayer());
     });
 

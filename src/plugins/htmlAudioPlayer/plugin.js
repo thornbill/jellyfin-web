@@ -1,4 +1,4 @@
-import { events } from 'jellyfin-apiclient';
+import { Events } from 'jellyfin-apiclient';
 import browser from '../../scripts/browser';
 import { appHost } from '../../components/apphost';
 import * as htmlMediaHelper from '../../components/htmlMediaHelper';
@@ -254,14 +254,14 @@ class HtmlAudioPlayer {
             // Don't trigger events after user stop
             if (!self._isFadingOut) {
                 self._currentTime = time;
-                events.trigger(self, 'timeupdate');
+                Events.trigger(self, 'timeupdate');
             }
         }
 
         function onVolumeChange() {
             if (!self._isFadingOut) {
                 htmlMediaHelper.saveVolume(this.volume);
-                events.trigger(self, 'volumechange');
+                Events.trigger(self, 'volumechange');
             }
         }
 
@@ -272,19 +272,19 @@ class HtmlAudioPlayer {
 
                 htmlMediaHelper.seekOnPlaybackStart(self, e.target, self._currentPlayOptions.playerStartPositionTicks);
             }
-            events.trigger(self, 'playing');
+            Events.trigger(self, 'playing');
         }
 
         function onPlay(e) {
-            events.trigger(self, 'unpause');
+            Events.trigger(self, 'unpause');
         }
 
         function onPause() {
-            events.trigger(self, 'pause');
+            Events.trigger(self, 'pause');
         }
 
         function onWaiting() {
-            events.trigger(self, 'waiting');
+            Events.trigger(self, 'waiting');
         }
 
         function onError() {

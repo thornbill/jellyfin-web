@@ -1,6 +1,6 @@
 import dom from '../../scripts/dom';
 import { playbackManager } from '../playback/playbackmanager';
-import { ConnectionManager, events } from 'jellyfin-apiclient';
+import { ConnectionManager, Events } from 'jellyfin-apiclient';
 import mediaInfo from '../mediainfo/mediainfo';
 import layoutManager from '../layoutManager';
 import focusManager from '../focusManager';
@@ -213,7 +213,7 @@ import '../../assets/css/flexstyles.css';
         elem.classList.add('hide');
 
         clearHideAnimationEventListeners(instance, elem);
-        events.trigger(instance, 'hide');
+        Events.trigger(instance, 'hide');
     }
 
     function hideComingUpNext() {

@@ -1,5 +1,5 @@
 import datetime from '../../scripts/datetime';
-import { ConnectionManager, events } from 'jellyfin-apiclient';
+import { ConnectionManager, Events } from 'jellyfin-apiclient';
 import itemHelper from '../../components/itemHelper';
 import serverNotifications from '../../scripts/serverNotifications';
 import dom from '../../scripts/dom';
@@ -798,13 +798,13 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                 loading.show();
                 pollForInfo(page, apiClient);
                 DashboardPage.startInterval(apiClient);
-                events.on(serverNotifications, 'RestartRequired', onRestartRequired);
-                events.on(serverNotifications, 'ServerShuttingDown', onServerShuttingDown);
-                events.on(serverNotifications, 'ServerRestarting', onServerRestarting);
-                events.on(serverNotifications, 'PackageInstalling', onPackageInstalling);
-                events.on(serverNotifications, 'PackageInstallationCompleted', onPackageInstallationCompleted);
-                events.on(serverNotifications, 'Sessions', onSessionsUpdate);
-                events.on(serverNotifications, 'ScheduledTasksInfo', onScheduledTasksUpdate);
+                Events.on(serverNotifications, 'RestartRequired', onRestartRequired);
+                Events.on(serverNotifications, 'ServerShuttingDown', onServerShuttingDown);
+                Events.on(serverNotifications, 'ServerRestarting', onServerRestarting);
+                Events.on(serverNotifications, 'PackageInstalling', onPackageInstalling);
+                Events.on(serverNotifications, 'PackageInstallationCompleted', onPackageInstallationCompleted);
+                Events.on(serverNotifications, 'Sessions', onSessionsUpdate);
+                Events.on(serverNotifications, 'ScheduledTasksInfo', onScheduledTasksUpdate);
                 DashboardPage.lastAppUpdateCheck = null;
                 reloadSystemInfo(page, ApiClient);
 
@@ -830,13 +830,13 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
         });
         view.addEventListener('viewbeforehide', function () {
             const apiClient = ApiClient;
-            events.off(serverNotifications, 'RestartRequired', onRestartRequired);
-            events.off(serverNotifications, 'ServerShuttingDown', onServerShuttingDown);
-            events.off(serverNotifications, 'ServerRestarting', onServerRestarting);
-            events.off(serverNotifications, 'PackageInstalling', onPackageInstalling);
-            events.off(serverNotifications, 'PackageInstallationCompleted', onPackageInstallationCompleted);
-            events.off(serverNotifications, 'Sessions', onSessionsUpdate);
-            events.off(serverNotifications, 'ScheduledTasksInfo', onScheduledTasksUpdate);
+            Events.off(serverNotifications, 'RestartRequired', onRestartRequired);
+            Events.off(serverNotifications, 'ServerShuttingDown', onServerShuttingDown);
+            Events.off(serverNotifications, 'ServerRestarting', onServerRestarting);
+            Events.off(serverNotifications, 'PackageInstalling', onPackageInstalling);
+            Events.off(serverNotifications, 'PackageInstallationCompleted', onPackageInstallationCompleted);
+            Events.off(serverNotifications, 'Sessions', onSessionsUpdate);
+            Events.off(serverNotifications, 'ScheduledTasksInfo', onScheduledTasksUpdate);
 
             if (apiClient) {
                 DashboardPage.stopInterval(apiClient);
