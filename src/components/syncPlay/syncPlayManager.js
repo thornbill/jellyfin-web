@@ -127,7 +127,7 @@ class SyncPlayManager {
 
             // Report ping
             if (this.syncEnabled) {
-                const apiClient = ConnectionManager.currentApiClient();
+                const apiClient = window.ConnectionManager.currentApiClient();
                 const sessionId = getActivePlayerId();
 
                 if (!sessionId) {
@@ -659,7 +659,7 @@ class SyncPlayManager {
      * Overrides PlaybackManager's unpause method.
      */
     playRequest (player) {
-        var apiClient = ConnectionManager.currentApiClient();
+        var apiClient = window.ConnectionManager.currentApiClient();
         apiClient.requestSyncPlayStart();
     }
 
@@ -667,7 +667,7 @@ class SyncPlayManager {
      * Overrides PlaybackManager's pause method.
      */
     pauseRequest (player) {
-        var apiClient = ConnectionManager.currentApiClient();
+        var apiClient = window.ConnectionManager.currentApiClient();
         apiClient.requestSyncPlayPause();
         // Pause locally as well, to give the user some little control
         playbackManager._localUnpause(player);
@@ -677,7 +677,7 @@ class SyncPlayManager {
      * Overrides PlaybackManager's seek method.
      */
     seekRequest (PositionTicks, player) {
-        var apiClient = ConnectionManager.currentApiClient();
+        var apiClient = window.ConnectionManager.currentApiClient();
         apiClient.requestSyncPlaySeek({
             PositionTicks: PositionTicks
         });
