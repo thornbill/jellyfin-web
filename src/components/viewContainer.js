@@ -14,7 +14,7 @@ import './viewManager/viewContainer.css';
             }
 
             controllerUrl = Dashboard.getConfigurationResourceUrl(controllerUrl);
-            return import(controllerUrl).then((ControllerFactory) => {
+            return import(/* webpackIgnore: true */ controllerUrl).then((ControllerFactory) => {
                 options.controllerFactory = ControllerFactory;
             });
         }
