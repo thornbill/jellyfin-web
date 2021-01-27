@@ -19,8 +19,8 @@ import '../../assets/css/scrollstyles.css';
         return null;
     }
 
-    function removeActivePanelClass(tabs, index) {
-        const tabPanel = getTabPanel(tabs, index);
+    function removeActivePanelClass() {
+        const tabPanel = getTabPanel();
         if (tabPanel) {
             tabPanel.classList.remove('is-active');
         }
@@ -48,10 +48,10 @@ import '../../assets/css/scrollstyles.css';
             }
         }));
         if (previousIndex != null && previousIndex !== index) {
-            removeActivePanelClass(tabs, previousIndex);
+            removeActivePanelClass();
         }
 
-        const newPanel = getTabPanel(tabs, index);
+        const newPanel = getTabPanel();
 
         if (newPanel) {
             // animate new panel ?
