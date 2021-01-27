@@ -271,7 +271,7 @@ import baseAlert from '../../../components/alert';
             Dashboard.selectServer();
         });
 
-        view.addEventListener('viewshow', function (e) {
+        view.addEventListener('viewshow', function () {
             loading.show();
             libraryMenu.setTransparentMenu(true);
 
@@ -306,7 +306,7 @@ import baseAlert from '../../../components/alert';
                 view.querySelector('.disclaimer').textContent = options.LoginDisclaimer || '';
             });
         });
-        view.addEventListener('viewhide', function (e) {
+        view.addEventListener('viewhide', function () {
             libraryMenu.setTransparentMenu(false);
         });
     }

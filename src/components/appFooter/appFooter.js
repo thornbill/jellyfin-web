@@ -1,6 +1,6 @@
 import './appFooter.css';
 
-function render(options) {
+function render() {
     const elem = document.createElement('div');
     elem.classList.add('appfooter');
 

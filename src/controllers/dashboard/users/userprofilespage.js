@@ -81,7 +81,7 @@ import confirm from '../../../components/confirm/confirm';
         });
     }
 
-    function getUserHtml(user, addConnectIndicator) {
+    function getUserHtml(user) {
         let html = '';
         let cssClass = 'card squareCard scalableCard squareCard-scalable';
 

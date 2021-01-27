@@ -197,7 +197,7 @@ import ServerConnections from '../ServerConnections';
         }
     }
 
-    function getMediaSourceStats(session, player, displayPlayMethod) {
+    function getMediaSourceStats(session, player) {
         const sessionStats = [];
 
         const mediaSource = playbackManager.currentMediaSource(player) || {};
