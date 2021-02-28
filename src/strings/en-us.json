@@ -176,9 +176,12 @@
     "Director": "Director",
     "Directors": "Directors",
     "DirectPlaying": "Direct playing",
+    "DirectPlayHelp": "The source file is entirely compatible with this client, and the session is receiving the file without modifications.",
     "DirectStreamHelp1": "The video stream is compatible with the device, but has an incompatible audio format (DTS, TRUEHD, etc) or number of audio channels. The video stream will be repackaged losslessly on the fly before being sent to the device. Only the audio stream will be transcoded.",
     "DirectStreamHelp2": "Power consumed by direct streaming usually depends on the audio profile. Only the video stream is lossless.",
     "DirectStreaming": "Direct streaming",
+    "EnablePlugin": "Enable Plugin",
+    "DisablePlugin": "Disable Plugin",
     "Disc": "Disc",
     "Disconnect": "Disconnect",
     "Display": "Display",
@@ -261,6 +264,7 @@
     "Filters": "Filters",
     "Folders": "Folders",
     "FormatValue": "Format: {0}",
+    "Framerate": "Framerate",
     "Friday": "Friday",
     "Fullscreen": "Full screen",
     "General": "General",
@@ -1497,5 +1501,8 @@
     "YoutubeNotFound": "Video not found.",
     "YoutubeDenied": "Requested video is not allowed to be played in embedded players.",
     "MessageChromecastConnectionError": "Your Google Cast receiver is unable to contact the Jellyfin server. Please check the connection and try again.",
-    "MessagePlaybackError": "There was an error playing this file on your Google Cast receiver."
+    "MessagePlaybackError": "There was an error playing this file on your Google Cast receiver.",
+    "EnableEnhancedNvdecDecoder": "Enable enhanced NVDEC decoder",
+    "EnableVppTonemapping": "Enable VPP Tone mapping",
+    "AllowVppTonemappingHelp": "Full hardware based tone mapping without using OpenCL filter. Currently works only when transcoding videos with embedded HDR10 metadata."
 }
