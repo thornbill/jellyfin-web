@@ -43,6 +43,11 @@ class AppRouter {
             }, 0);
         });
 
+        window.addEventListener('hashchange', (e) => {
+            console.log('hash change: ', e, window.location.hash);
+            this.show(window.location.hash);
+        });
+
         document.addEventListener('viewshow', () => {
             const resolve = this.resolveOnNextShow;
             if (resolve) {
