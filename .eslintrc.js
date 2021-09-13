@@ -55,6 +55,7 @@ module.exports = {
         '@babel/semi': ['error'],
         'no-var': ['error'],
         'space-before-blocks': ['error'],
+        'space-before-function-paren': ['error', { 'anonymous': 'never', 'named': 'never', 'asyncArrow': 'always' }],
         'space-infix-ops': 'error',
         'yoda': 'error'
     },

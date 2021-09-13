@@ -122,7 +122,7 @@
     "build:production": "webpack --config webpack.prod.js",
     "lint": "eslint \"src/\"",
     "stylelint": "npm run stylelint:css && npm run stylelint:scss",
-    "stylelint:css": "stylelint \"src/**/*.css\"",
+    "stylelint:css": "stylelint \"src/**/*.{css,tsx}\"",
     "stylelint:scss": "stylelint --config=\".stylelintrc.scss.json\" \"src/**/*.scss\""
   },
   "engines": {
