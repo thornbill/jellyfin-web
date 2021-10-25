@@ -98,25 +98,26 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules[\\/](?!@uupaa[\\/]dynamic-import-polyfill|blurhash|date-fns|epubjs|flv.js|libarchive.js)/,
                 use: [{
-                    loader: 'babel-loader'
+                    loader: 'swc-loader'
                 }]
             },
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
                 use: [{
-                    loader: 'ts-loader'
+                    loader: 'swc-loader'
                 }]
             },
             /* modules that Babel breaks when transforming to ESM */
             {
                 test: /node_modules[\\/](pdfjs-dist|xmldom)[\\/].*\.js$/,
                 use: [{
-                    loader: 'babel-loader',
+                    loader: 'swc-loader',
                     options: {
-                        plugins: [
-                            '@babel/transform-modules-umd'
-                        ]
+                    //     plugins: [
+                    //         '@babel/transform-modules-umd'
+                    //     ]
+                        'module': { 'type': 'umd' }
                     }
                 }]
             },
