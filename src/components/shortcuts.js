@@ -13,6 +13,7 @@ import dom from '../scripts/dom';
 import recordingHelper from './recordingcreator/recordinghelper';
 import ServerConnections from './ServerConnections';
 import toast from './toast/toast';
+import history from '../history';
 
     function playAllFromHere(card, serverId, queue) {
         const parent = card.parentNode;
@@ -189,10 +190,15 @@ import toast from './toast/toast';
         }
 
         if (action === 'link') {
-            appRouter.showItem(item, {
+            history.push('/details.html', { state: {
+                item,
                 context: card.getAttribute('data-context'),
                 parentId: card.getAttribute('data-parentid')
-            });
+            } });
+            // appRouter.showItem(item, {
+            //     context: card.getAttribute('data-context'),
+            //     parentId: card.getAttribute('data-parentid')
+            // });
         } else if (action === 'programdialog') {
             showProgramDialog(item);
         } else if (action === 'instantmix') {

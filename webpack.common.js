@@ -38,6 +38,14 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html',
+            chunks: ['current'],
+            // Append file hashes to bundle urls for cache busting
+            hash: true
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.react.html',
+            template: 'index.react.html',
+            chunks: ['react'],
             // Append file hashes to bundle urls for cache busting
             hash: true
         }),
