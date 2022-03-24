@@ -30,6 +30,7 @@
     "copy-webpack-plugin": "10.2.4",
     "css-loader": "6.7.1",
     "cssnano": "5.1.1",
+    "cypress": "9.5.2",
     "eslint": "8.10.0",
     "eslint-plugin-compat": "4.0.2",
     "eslint-plugin-eslint-comments": "3.2.0",
@@ -129,7 +130,8 @@
     "lint": "eslint \"src/\"",
     "stylelint": "npm run stylelint:css && npm run stylelint:scss",
     "stylelint:css": "stylelint \"src/**/*.css\"",
-    "stylelint:scss": "stylelint --config=\".stylelintrc.scss.json\" \"src/**/*.scss\""
+    "stylelint:scss": "stylelint --config=\".stylelintrc.scss.json\" \"src/**/*.scss\"",
+    "test:serve": "webpack serve --config webpack.test.js"
   },
   "engines": {
     "yarn": "YARN NO LONGER USED - use npm instead."
