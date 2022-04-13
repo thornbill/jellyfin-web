@@ -1,17 +1,20 @@
+import { Events } from 'jellyfin-apiclient';
+import { createHashHistory } from 'history';
+
 import { appHost } from './apphost';
 import appSettings from '../scripts/settings/appSettings';
 import backdrop from './backdrop/backdrop';
 import browser from '../scripts/browser';
-import { Events } from 'jellyfin-apiclient';
 import globalize from '../scripts/globalize';
 import itemHelper from './itemHelper';
 import loading from './loading/loading';
-import page from 'page';
 import viewManager from './viewManager/viewManager';
 import Dashboard from '../utils/dashboard';
 import ServerConnections from './ServerConnections';
 import alert from './alert';
 import reactControllerFactory from './reactControllerFactory';
+
+const history = createHashHistory();
 
 class AppRouter {
     allRoutes = [];
@@ -33,6 +36,7 @@ class AppRouter {
     startPages = ['home', 'login', 'selectserver'];
 
     constructor() {
+        // TODO: Is this workaround still needed?
         // WebKit fires a popstate event on document load
         // Skip it using boolean
         // For Tizen 2.x
@@ -52,6 +56,7 @@ class AppRouter {
 
         document.addEventListener('viewshow', () => this.onViewShow());
 
+        // TODO: Can this baseRoute logic be simplified or removed?
         this.baseRoute = window.location.href.split('?')[0].replace(this.getRequestFile(), '');
         // support hashbang
         this.baseRoute = this.baseRoute.split('#')[0];
@@ -60,12 +65,6 @@ class AppRouter {
         }
 
         this.setBaseRoute();
-
-        // paths that start with a hashbang (i.e. /#!/page.html) get transformed to starting with //
-        // we need to strip one "/" for our routes to work
-        page('//*', (ctx) => {
-            page.redirect(ctx.path.substring(1));
-        });
     }
 
     /**
@@ -77,11 +76,10 @@ class AppRouter {
             baseRoute = baseRoute.substring(0, baseRoute.length - 1);
         }
         console.debug('setting page base to ' + baseRoute);
-        page.base(baseRoute);
     }
 
     addRoute(path, newRoute) {
-        page(path, this.getHandler(newRoute));
+        // FIXME: Using a Map here would probably be best
         this.allRoutes.push(newRoute);
     }
 
@@ -124,7 +122,7 @@ class AppRouter {
 
         this.promiseShow = new Promise((resolve) => {
             this.resolveOnNextShow = resolve;
-            page.back();
+            history.back();
         });
 
         return this.promiseShow;
@@ -155,7 +153,7 @@ class AppRouter {
         this.promiseShow = new Promise((resolve) => {
             this.resolveOnNextShow = resolve;
             // Schedule a call to return the promise
-            setTimeout(() => page.show(path, options), 0);
+            setTimeout(() => history.push(path, options), 0);
         });
 
         return this.promiseShow;
@@ -167,27 +165,48 @@ class AppRouter {
         this.promiseShow = new Promise((resolve) => {
             this.resolveOnNextShow = resolve;
             // Schedule a call to return the promise
-            setTimeout(() => page.show(this.baseUrl() + path), 0);
+            setTimeout(() => history.push(this.baseUrl() + path), 0);
         });
 
         return this.promiseShow;
     }
 
-    start(options) {
+    start() {
         loading.show();
         this.initApiClients();
 
         Events.on(appHost, 'beforeexit', this.onBeforeExit);
         Events.on(appHost, 'resume', this.onAppResume);
 
+        // FIXME: move this function
+        const goToRoute = location => {
+            console.info('[appRouter] LOCATION CHANGE:', location.pathname, location.state);
+            // Strip the leading "!" if present
+            const normalizedPath = location.pathname.replace(/^!/, '');
+            console.info('[appRouter] normalized path', normalizedPath);
+            const route = this.allRoutes.find(r => r.alias === normalizedPath || r.path === normalizedPath);
+            console.info('[appRouter] MATCHED ROUTE:', route);
+            if (route) {
+                const routeHandler = this.getHandler(route);
+                routeHandler({
+                    ...location,
+                    // FIXME: We should use location.state instead of parsing the path for query params again
+                    path: normalizedPath + location.search
+                });
+            }
+        };
+
         ServerConnections.connect({
             enableAutoLogin: appSettings.enableAutoLogin()
         }).then((result) => {
             this.firstConnectionResult = result;
-            options = options || {};
-            page({
-                click: options.click !== false,
-                hashbang: options.hashbang !== false
+
+            // Handle the initial route
+            goToRoute(history.location);
+            // Handle route changes
+            history.listen(({ location, action }) => {
+                console.log('[appRouter] LOCATION CHANGE', action, location);
+                goToRoute(location);
             });
         }).catch().then(() => {
             loading.hide();
@@ -470,7 +489,8 @@ class AppRouter {
 
     onBeforeExit() {
         if (browser.web0s) {
-            page.restorePreviousState();
+            // FIXME: What needs to happen here?
+            // page.restorePreviousState();
         }
     }
 
