@@ -11,7 +11,7 @@ import ServerConnections from './ServerConnections';
 import alert from './alert';
 import reactControllerFactory from './reactControllerFactory';
 
-const history = createHashHistory();
+export const history = createHashHistory();
 
 /**
  * Page types of "no return" (when "Go back" should behave differently, probably quitting the application).
@@ -119,7 +119,7 @@ class AppRouter {
                 isBack: action === Action.Pop
             });
         } else {
-            console.warn('[appRouter] "%s" route not found', normalizedPath, location);
+            console.info('[appRouter] "%s" route not found', normalizedPath, location);
         }
     }
 
@@ -136,7 +136,7 @@ class AppRouter {
             Events.on(apiClient, 'requestfail', this.onRequestFail);
         });
 
-        ServerConnections.connect().then(result => {
+        return ServerConnections.connect().then(result => {
             this.firstConnectionResult = result;
 
             // Handle the initial route
