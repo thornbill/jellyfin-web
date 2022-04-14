@@ -13,8 +13,10 @@ import Dashboard from '../utils/dashboard';
 import ServerConnections from './ServerConnections';
 import alert from './alert';
 import reactControllerFactory from './reactControllerFactory';
+import viewContainer from './viewContainer';
+import { setTabs } from './maintabsmanager';
 
-const history = createHashHistory();
+export const history = createHashHistory();
 
 class AppRouter {
     allRoutes = [];
@@ -193,6 +195,10 @@ class AppRouter {
                     // FIXME: We should use location.state instead of parsing the path for query params again
                     path: normalizedPath + location.search
                 });
+            } else {
+                // TODO: Does this fully unload the current view?
+                setTabs(null);
+                viewContainer.reset();
             }
         };
 
