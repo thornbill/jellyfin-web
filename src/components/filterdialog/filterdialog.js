@@ -87,7 +87,7 @@ import template from './filterdialog.template.html';
         context.querySelector('.chk3DFilter').checked = query.Is3D === true;
         context.querySelector('.chkHDFilter').checked = query.IsHD === true;
         context.querySelector('.chk4KFilter').checked = query.Is4K === true;
-        context.querySelector('.chkSDFilter').checked = query.IsHD === true;
+        context.querySelector('.chkSDFilter').checked = query.IsHD === false;
         context.querySelector('#chkSubtitle').checked = query.HasSubtitles === true;
         context.querySelector('#chkTrailer').checked = query.HasTrailer === true;
         context.querySelector('#chkThemeSong').checked = query.HasThemeSong === true;
