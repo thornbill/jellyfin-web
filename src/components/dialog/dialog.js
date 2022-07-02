@@ -11,7 +11,7 @@ import '../../elements/emby-button/paper-icon-button-light';
 import '../../elements/emby-input/emby-input';
 import '../formdialog.scss';
 import '../../assets/css/flexstyles.scss';
-import template from './dialog.template.html';
+import template from './dialog.template.html?raw';
 
 /* eslint-disable indent */
 

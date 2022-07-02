@@ -72,16 +72,16 @@ export function getIncludeCorsCredentials() {
 
 export function getMultiServer() {
     // Enable multi-server support when served by webpack
-    if (__WEBPACK_SERVE__) { // eslint-disable-line no-undef
-        return Promise.resolve(true);
-    }
+    // if (import.meta.env.DEV) { // eslint-disable-line no-undef
+    return Promise.resolve(true);
+    // }
 
-    return getConfig().then(config => {
-        return !!config.multiserver;
-    }).catch(error => {
-        console.log('cannot get web config:', error);
-        return false;
-    });
+    // return getConfig().then(config => {
+    //     return !!config.multiserver;
+    // }).catch(error => {
+    //     console.log('cannot get web config:', error);
+    //     return false;
+    // });
 }
 
 export function getServers() {

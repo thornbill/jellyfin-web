@@ -267,7 +267,8 @@ class AppRouter {
         if (route.pageComponent) {
             onInitComplete(reactControllerFactory);
         } else if (route.controller) {
-            import('../controllers/' + route.controller).then(onInitComplete);
+            console.log('>>> loading controller', route.controller);
+            import(`../controllers/${route.controller}`).then(onInitComplete);
         } else {
             onInitComplete();
         }
@@ -281,6 +282,7 @@ class AppRouter {
     }
 
     #sendRouteToViewManager(ctx, next, route, controllerFactory) {
+        console.log('sendRouteToViewManager', ctx, next, route, controllerFactory);
         this.#cancelCurrentLoadRequest();
         const isBackNav = ctx.isBack;
 
