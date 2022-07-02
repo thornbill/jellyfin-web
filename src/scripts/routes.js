@@ -30,7 +30,7 @@ import { appRouter } from '../components/appRouter';
         autoFocus: false,
         anonymous: true,
         startup: true,
-        controller: 'session/addServer/index'
+        controller: 'session/addServer/index.js'
     });
 
     defineRoute({
@@ -39,7 +39,7 @@ import { appRouter } from '../components/appRouter';
         autoFocus: false,
         anonymous: true,
         startup: true,
-        controller: 'session/selectServer/index',
+        controller: 'session/selectServer/index.js',
         type: 'selectserver'
     });
 
@@ -49,7 +49,7 @@ import { appRouter } from '../components/appRouter';
         autoFocus: false,
         anonymous: true,
         startup: true,
-        controller: 'session/login/index',
+        controller: 'session/login/index.js',
         type: 'login'
     });
 
@@ -58,7 +58,7 @@ import { appRouter } from '../components/appRouter';
         path: 'session/forgotPassword/index.html',
         anonymous: true,
         startup: true,
-        controller: 'session/forgotPassword/index'
+        controller: 'session/forgotPassword/index.js'
     });
 
     defineRoute({
@@ -67,14 +67,14 @@ import { appRouter } from '../components/appRouter';
         autoFocus: false,
         anonymous: true,
         startup: true,
-        controller: 'session/resetPassword/index'
+        controller: 'session/resetPassword/index.js'
     });
 
     defineRoute({
         alias: '/mypreferencesmenu.html',
         path: 'user/menu/index.html',
         autoFocus: false,
-        controller: 'user/menu/index'
+        controller: 'user/menu/index.js'
     });
 
     defineRoute({
@@ -88,21 +88,21 @@ import { appRouter } from '../components/appRouter';
         alias: '/mypreferencescontrols.html',
         path: 'user/controls/index.html',
         autoFocus: false,
-        controller: 'user/controls/index'
+        controller: 'user/controls/index.js'
     });
 
     defineRoute({
         alias: '/mypreferencesdisplay.html',
         path: 'user/display/index.html',
         autoFocus: false,
-        controller: 'user/display/index'
+        controller: 'user/display/index.js'
     });
 
     defineRoute({
         alias: '/mypreferenceshome.html',
         path: 'user/home/index.html',
         autoFocus: false,
-        controller: 'user/home/index'
+        controller: 'user/home/index.js'
     });
 
     defineRoute({
@@ -110,20 +110,20 @@ import { appRouter } from '../components/appRouter';
         path: 'user/quickConnect/index.html',
         autoFocus: false,
         transition: 'fade',
-        controller: 'user/quickConnect/index'
+        controller: 'user/quickConnect/index.js'
     });
     defineRoute({
         alias: '/mypreferencesplayback.html',
         path: 'user/playback/index.html',
         autoFocus: false,
-        controller: 'user/playback/index'
+        controller: 'user/playback/index.js'
     });
 
     defineRoute({
         alias: '/mypreferencessubtitles.html',
         path: 'user/subtitles/index.html',
         autoFocus: false,
-        controller: 'user/subtitles/index'
+        controller: 'user/subtitles/index.js'
     });
 
     defineRoute({
@@ -131,13 +131,13 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/dashboard.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/dashboard'
+        controller: 'dashboard/dashboard.js'
     });
 
     defineRoute({
         alias: '/dashboardgeneral.html',
         path: 'dashboard/general.html',
-        controller: 'dashboard/general',
+        controller: 'dashboard/general.js',
         autoFocus: false,
         roles: 'admin'
     });
@@ -147,7 +147,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/networking.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/networking'
+        controller: 'dashboard/networking.js'
     });
 
     defineRoute({
@@ -155,7 +155,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/devices/devices.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/devices/devices'
+        controller: 'dashboard/devices/devices.js'
     });
 
     defineRoute({
@@ -163,7 +163,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/devices/device.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/devices/device'
+        controller: 'dashboard/devices/device.js'
     });
 
     defineRoute({
@@ -171,7 +171,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/quickConnect.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/quickConnect'
+        controller: 'dashboard/quickConnect.js'
     });
 
     defineRoute({
@@ -179,7 +179,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/dlna/profile.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/dlna/profile'
+        controller: 'dashboard/dlna/profile.js'
     });
 
     defineRoute({
@@ -187,7 +187,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/dlna/profiles.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/dlna/profiles'
+        controller: 'dashboard/dlna/profiles.js'
     });
 
     defineRoute({
@@ -195,7 +195,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/dlna/settings.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/dlna/settings'
+        controller: 'dashboard/dlna/settings.js'
     });
 
     defineRoute({
@@ -203,7 +203,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/plugins/add/index.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/plugins/add/index'
+        controller: 'dashboard/plugins/add/index.js'
     });
 
     defineRoute({
@@ -211,7 +211,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/library.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/library'
+        controller: 'dashboard/library.js'
     });
 
     defineRoute({
@@ -219,13 +219,13 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/librarydisplay.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/librarydisplay'
+        controller: 'dashboard/librarydisplay.js'
     });
 
     defineRoute({
         alias: '/edititemmetadata.html',
         path: 'edititemmetadata.html',
-        controller: 'edititemmetadata',
+        controller: 'edititemmetadata.js',
         autoFocus: false
     });
 
@@ -234,14 +234,14 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/encodingsettings.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/encodingsettings'
+        controller: 'dashboard/encodingsettings.js'
     });
 
     defineRoute({
         alias: '/log.html',
         path: 'dashboard/logs.html',
         roles: 'admin',
-        controller: 'dashboard/logs'
+        controller: 'dashboard/logs.js'
     });
 
     defineRoute({
@@ -249,7 +249,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/metadataimages.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/metadataImages'
+        controller: 'dashboard/metadataImages.js'
     });
 
     defineRoute({
@@ -257,7 +257,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/metadatanfo.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/metadatanfo'
+        controller: 'dashboard/metadatanfo.js'
     });
 
     defineRoute({
@@ -265,13 +265,13 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/notifications/notification/index.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/notifications/notification/index'
+        controller: 'dashboard/notifications/notification/index.js'
     });
 
     defineRoute({
         alias: '/notificationsettings.html',
         path: 'dashboard/notifications/notifications/index.html',
-        controller: 'dashboard/notifications/notifications/index',
+        controller: 'dashboard/notifications/notifications/index.js',
         autoFocus: false,
         roles: 'admin'
     });
@@ -281,7 +281,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/playback.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/playback'
+        controller: 'dashboard/playback.js'
     });
 
     defineRoute({
@@ -289,7 +289,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/plugins/available/index.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/plugins/available/index'
+        controller: 'dashboard/plugins/available/index.js'
     });
 
     defineRoute({
@@ -297,14 +297,14 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/plugins/repositories/index.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/plugins/repositories/index'
+        controller: 'dashboard/plugins/repositories/index.js'
     });
 
     defineRoute({
         alias: '/home.html',
         path: 'home.html',
         autoFocus: false,
-        controller: 'home',
+        controller: 'home.js',
         type: 'home'
     });
 
@@ -312,20 +312,20 @@ import { appRouter } from '../components/appRouter';
         alias: '/list.html',
         path: 'list.html',
         autoFocus: false,
-        controller: 'list'
+        controller: 'list.js'
     });
 
     defineRoute({
         alias: '/details',
         path: 'itemDetails/index.html',
-        controller: 'itemDetails/index',
+        controller: 'itemDetails/index.js',
         autoFocus: false
     });
 
     defineRoute({
         alias: '/livetv.html',
         path: 'livetv.html',
-        controller: 'livetv/livetvsuggested',
+        controller: 'livetv/livetvsuggested.js',
         autoFocus: false
     });
 
@@ -334,14 +334,14 @@ import { appRouter } from '../components/appRouter';
         path: 'livetvguideprovider.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'livetvguideprovider'
+        controller: 'livetvguideprovider.js'
     });
 
     defineRoute({
         alias: '/livetvsettings.html',
         path: 'livetvsettings.html',
         autoFocus: false,
-        controller: 'livetvsettings'
+        controller: 'livetvsettings.js'
     });
 
     defineRoute({
@@ -349,7 +349,7 @@ import { appRouter } from '../components/appRouter';
         path: 'livetvstatus.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'livetvstatus'
+        controller: 'livetvstatus.js'
     });
 
     defineRoute({
@@ -357,20 +357,20 @@ import { appRouter } from '../components/appRouter';
         path: 'livetvtuner.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'livetvtuner'
+        controller: 'livetvtuner.js'
     });
 
     defineRoute({
         alias: '/movies.html',
         path: 'movies/movies.html',
         autoFocus: false,
-        controller: 'movies/moviesrecommended'
+        controller: 'movies/moviesrecommended.js'
     });
 
     defineRoute({
         alias: '/music.html',
         path: 'music/music.html',
-        controller: 'music/musicrecommended',
+        controller: 'music/musicrecommended.js',
         autoFocus: false
     });
 
@@ -379,7 +379,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/plugins/installed/index.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/plugins/installed/index'
+        controller: 'dashboard/plugins/installed/index.js'
     });
 
     defineRoute({
@@ -387,7 +387,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/scheduledtasks/scheduledtask.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/scheduledtasks/scheduledtask'
+        controller: 'dashboard/scheduledtasks/scheduledtask.js'
     });
 
     defineRoute({
@@ -395,7 +395,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/scheduledtasks/scheduledtasks.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/scheduledtasks/scheduledtasks'
+        controller: 'dashboard/scheduledtasks/scheduledtasks.js'
     });
 
     defineRoute({
@@ -403,7 +403,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/serveractivity.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/serveractivity'
+        controller: 'dashboard/serveractivity.js'
     });
 
     defineRoute({
@@ -411,7 +411,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/apikeys.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/apikeys'
+        controller: 'dashboard/apikeys.js'
     });
 
     defineRoute({
@@ -419,14 +419,14 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/streaming.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/streaming'
+        controller: 'dashboard/streaming.js'
     });
 
     defineRoute({
         alias: '/tv.html',
         path: 'shows/tvrecommended.html',
         autoFocus: false,
-        controller: 'shows/tvrecommended'
+        controller: 'shows/tvrecommended.js'
     });
 
     defineRoute({
@@ -481,7 +481,7 @@ import { appRouter } from '../components/appRouter';
         path: 'wizard/remote/index.html',
         autoFocus: false,
         anonymous: true,
-        controller: 'wizard/remote/index'
+        controller: 'wizard/remote/index.js'
     });
 
     defineRoute({
@@ -489,7 +489,7 @@ import { appRouter } from '../components/appRouter';
         path: 'wizard/finish/index.html',
         autoFocus: false,
         anonymous: true,
-        controller: 'wizard/finish/index'
+        controller: 'wizard/finish/index.js'
     });
 
     defineRoute({
@@ -497,7 +497,7 @@ import { appRouter } from '../components/appRouter';
         path: 'wizard/library.html',
         autoFocus: false,
         anonymous: true,
-        controller: 'dashboard/library'
+        controller: 'dashboard/library.js'
     });
 
     defineRoute({
@@ -505,7 +505,7 @@ import { appRouter } from '../components/appRouter';
         path: 'wizard/settings/index.html',
         autoFocus: false,
         anonymous: true,
-        controller: 'wizard/settings/index'
+        controller: 'wizard/settings/index.js'
     });
 
     defineRoute({
@@ -513,13 +513,13 @@ import { appRouter } from '../components/appRouter';
         path: 'wizard/start/index.html',
         autoFocus: false,
         anonymous: true,
-        controller: 'wizard/start/index'
+        controller: 'wizard/start/index.js'
     });
 
     defineRoute({
         alias: '/wizarduser.html',
         path: 'wizard/user/index.html',
-        controller: 'wizard/user/index',
+        controller: 'wizard/user/index.js',
         autoFocus: false,
         anonymous: true
     });
@@ -527,7 +527,7 @@ import { appRouter } from '../components/appRouter';
     defineRoute({
         alias: '/video',
         path: 'playback/video/index.html',
-        controller: 'playback/video/index',
+        controller: 'playback/video/index.js',
         autoFocus: false,
         type: 'video-osd',
         supportsThemeMedia: true,
@@ -538,7 +538,7 @@ import { appRouter } from '../components/appRouter';
     defineRoute({
         alias: '/queue',
         path: 'playback/queue/index.html',
-        controller: 'playback/queue/index',
+        controller: 'playback/queue/index.js',
         autoFocus: false,
         fullscreen: true,
         supportsThemeMedia: true,

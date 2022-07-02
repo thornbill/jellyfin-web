@@ -66,6 +66,7 @@ function init() {
     window.TaskButton = taskButton;
 
     serverAddress().then(server => {
+        console.log('server', server);
         if (server) {
             ServerConnections.initApiClient(server);
         }
@@ -200,7 +201,7 @@ async function onAppReady() {
 
     if (!browser.tv && !browser.xboxOne) {
         import('../components/playback/playbackorientation');
-        registerServiceWorker();
+        // registerServiceWorker();
 
         if (window.Notification) {
             import('../components/notifications/notifications');
