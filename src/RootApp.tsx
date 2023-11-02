@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 
 import { DASHBOARD_APP_PATHS } from 'apps/dashboard/App';
 import AppHeader from 'components/AppHeader';
-import Backdrop from 'components/Backdrop';
 import { HistoryRouter } from 'components/router/HistoryRouter';
 import { ApiProvider } from 'hooks/useApi';
 import { WebConfigProvider } from 'hooks/useWebConfig';
