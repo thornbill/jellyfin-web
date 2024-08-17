@@ -263,10 +263,6 @@ export function getListViewHtml(options) {
             const imgUrl = options.imageSource === 'channel' ? getChannelImageUrl(item, downloadWidth) : getImageUrl(item, downloadWidth);
             let imageClass = isLargeStyle ? 'listItemImage listItemImage-large' : 'listItemImage';
 
-            if (options.imageSource === 'channel') {
-                imageClass += ' listItemImage-channel';
-            }
-
             if (isLargeStyle && layoutManager.tv) {
                 imageClass += ' listItemImage-large-tv';
             }

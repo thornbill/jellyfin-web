@@ -139,7 +139,7 @@
     min-width: 2.78em;
     min-height: 2.78em;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     flex-shrink: 0;
     background-position: center center;
     position: relative;
@@ -151,10 +151,6 @@
     height: 13vw;
     background-position: center center;
     margin-right: 0.75em;
-}
-
-.listItemImage-channel {
-    background-size: contain;
 }
 
 .listItemImageButton {
