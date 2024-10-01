@@ -23,6 +23,8 @@ import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type'
 import { MediaError } from 'types/mediaError';
 import { getMediaError } from 'utils/mediaError';
 
+import { bindLoggingSubscriber } from 'apps/stable/features/playback/utils/loggingSubscriber';
+
 const UNLIMITED_ITEMS = -1;
 
 function enableLocalPlaylistManagement(player) {
@@ -3645,6 +3647,8 @@ export class PlaybackManager {
                 Events.on(serverNotifications, 'ServerRestarting', self.setDefaultPlayerActive.bind(self));
             });
         }
+
+        bindLoggingSubscriber(self);
     }
 
     getCurrentPlayer() {
