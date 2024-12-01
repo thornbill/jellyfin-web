@@ -11,6 +11,7 @@ import 'resize-observer-polyfill';
 import './domParserTextHtml';
 import './focusPreventScroll';
 import './htmlMediaElement';
+import './htmlSlotElement';
 import './keyboardEvent';
 import './patchHeaders';
 import './vendorStyles';
