@@ -1,6 +1,5 @@
 import type { AxiosRequestConfig } from 'axios';
 import type { LibraryApiGetItemsRequest } from '@jellyfin/sdk/lib/generated-client/api/library-api';
-import type { PlaylistApiMoveItemRequest } from '@jellyfin/sdk/lib/generated-client/api/playlist-api';
 import type { BaseItemKind } from '@jellyfin/sdk/lib/generated-client/models/base-item-kind';
 import { ImageType } from '@jellyfin/sdk/lib/generated-client/models/image-type';
 import { ItemFields } from '@jellyfin/sdk/lib/generated-client/models/item-fields';
@@ -11,10 +10,9 @@ import { SortOrder } from '@jellyfin/sdk/lib/generated-client/models/sort-order'
 import { getFilterApi } from '@jellyfin/sdk/lib/utils/api/filter-api';
 import { getPersonApi } from '@jellyfin/sdk/lib/utils/api/person-api';
 import { getStudioApi } from '@jellyfin/sdk/lib/utils/api/studio-api';
-import { getPlaylistApi } from '@jellyfin/sdk/lib/utils/api/playlist-api';
 import { getLibraryApi } from '@jellyfin/sdk/lib/utils/api/library-api';
 import { getLiveTvApi } from '@jellyfin/sdk/lib/utils/api/live-tv-api';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { type JellyfinApiContext, useApi } from './useApi';
 import { getAlphaPickerQuery, getFieldsQuery, getFiltersQuery, getLimitQuery } from 'utils/items';
@@ -401,26 +399,5 @@ export const useGetItemsViewByType = (
                 LibraryTab.Folders,
                 LibraryTab.Mixed
             ].includes(viewType)
-    });
-};
-
-const fetchPlaylistsMoveItem = async (
-    currentApi: JellyfinApiContext,
-    requestParameters: PlaylistApiMoveItemRequest
-) => {
-    const { api, user } = currentApi;
-    if (api && user?.Id) {
-        const response = await getPlaylistApi(api).moveItem({
-            ...requestParameters
-        });
-        return response.data;
-    }
-};
-
-export const usePlaylistsMoveItemMutation = () => {
-    const currentApi = useApi();
-    return useMutation({
-        mutationFn: (requestParameters: PlaylistApiMoveItemRequest) =>
-            fetchPlaylistsMoveItem(currentApi, requestParameters )
     });
 };
