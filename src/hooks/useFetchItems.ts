@@ -16,16 +16,13 @@ import { getLibraryApi } from '@jellyfin/sdk/lib/utils/api/library-api';
 import { getLiveTvApi } from '@jellyfin/sdk/lib/utils/api/live-tv-api';
 import { getUserDataApi } from '@jellyfin/sdk/lib/utils/api/user-data-api';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import datetime from 'scripts/datetime';
 
 import { type JellyfinApiContext, useApi } from './useApi';
 import { getAlphaPickerQuery, getFieldsQuery, getFiltersQuery, getLimitQuery } from 'utils/items';
 
 import type { LibraryViewSettings, ParentId } from 'types/library';
 import { LibraryTab } from 'types/libraryTab';
-import { ItemKind } from 'types/base/models/item-kind';
 import type { ItemDtoQueryResult } from 'types/base/models/item-dto-query-result';
-import type { ItemDto } from 'types/base/models/item-dto';
 
 const fetchGetItems = async (
     currentApi: JellyfinApiContext,
@@ -498,91 +495,5 @@ export const useTogglePlayedMutation = () => {
     return useMutation({
         mutationFn: ({ itemId, isPlayed }: TogglePlayedMutationProp) =>
             fetchUpdatePlayedState(currentApi, itemId, isPlayed )
-    });
-};
-
-export type GroupsTimers = {
-    name: string;
-    timerInfo: ItemDto[];
-};
-
-function groupsTimers(timers: ItemDto[], indexByDate?: boolean) {
-    const items = timers.map(function (t) {
-        t.Type = ItemKind.Timer;
-        return t;
-    });
-    const groups: GroupsTimers[] = [];
-    let currentGroupName = '';
-    let currentGroup: ItemDto[] = [];
-
-    for (const item of items) {
-        let dateText = '';
-
-        if (indexByDate !== false && item.StartDate) {
-            try {
-                const premiereDate = datetime.parseISO8601Date(item.StartDate, true);
-                dateText = datetime.toLocaleDateString(premiereDate, {
-                    weekday: 'long',
-                    month: 'short',
-                    day: 'numeric'
-                });
-            } catch (err) {
-                console.error('error parsing premiereDate:' + item.StartDate + '; error: ' + err);
-            }
-        }
-
-        if (dateText != currentGroupName) {
-            if (currentGroup.length) {
-                groups.push({
-                    name: currentGroupName,
-                    timerInfo: currentGroup
-                });
-            }
-
-            currentGroupName = dateText;
-            currentGroup = [item];
-        } else {
-            currentGroup.push(item);
-        }
-    }
-
-    if (currentGroup.length) {
-        groups.push({
-            name: currentGroupName,
-            timerInfo: currentGroup
-        });
-    }
-    return groups;
-}
-
-const fetchGetTimers = async (
-    currentApi: JellyfinApiContext,
-    indexByDate?: boolean,
-    options?: AxiosRequestConfig
-) => {
-    const { api } = currentApi;
-    if (api) {
-        const response = await getLiveTvApi(api).getTimers(
-            {
-                isActive: false,
-                isScheduled: true
-            },
-            {
-                signal: options?.signal
-            }
-        );
-
-        const timers = (response.data.Items as ItemDto[]) || [];
-
-        return groupsTimers(timers, indexByDate);
-    }
-};
-
-export const useGetTimers = (isUpcomingRecordingsEnabled: boolean, indexByDate?: boolean) => {
-    const currentApi = useApi();
-    return useQuery({
-        queryKey: ['Timers', { isUpcomingRecordingsEnabled, indexByDate }],
-        queryFn: ({ signal }) => fetchGetTimers(currentApi, indexByDate, { signal }),
-        enabled: !!currentApi.api && !!currentApi.user?.Id && isUpcomingRecordingsEnabled
     });
 };
