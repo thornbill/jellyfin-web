@@ -16,7 +16,7 @@ import Typography from '@mui/material/Typography';
 
 import { useGetQueryFilters } from 'apps/modern/features/libraries/hooks/api/useQueryFilters';
 import { useGetQueryFiltersLegacy } from 'apps/modern/features/libraries/hooks/api/useQueryFiltersLegacy';
-import { useGetStudios } from 'hooks/useFetchItems';
+import { useGetStudios } from 'apps/modern/features/libraries/hooks/api/useStudios';
 import globalize from 'lib/globalize';
 
 import FiltersAudioLanguages from './FiltersAudioLanguages';
