@@ -4,8 +4,7 @@ import { ItemSortBy } from '@jellyfin/sdk/lib/generated-client/models/item-sort-
 import { getLibraryApi } from '@jellyfin/sdk/lib/utils/api/library-api';
 import { useQuery } from '@tanstack/react-query';
 
-import { type JellyfinApiContext, useApi } from './useApi';
-
+import { type JellyfinApiContext, useApi } from 'hooks/useApi';
 import type { ItemDtoQueryResult } from 'types/base/models/item-dto-query-result';
 
 const fetchGetItems = async (
@@ -28,7 +27,7 @@ const fetchGetItems = async (
     }
 };
 
-export const useGetItems = (parametersOptions: LibraryApiGetItemsRequest) => {
+export const useItems = (parametersOptions: LibraryApiGetItemsRequest) => {
     const currentApi = useApi();
     const isRandom = Boolean(parametersOptions.sortBy?.includes(ItemSortBy.Random));
 
